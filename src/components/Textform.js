@@ -83,24 +83,23 @@ export default function Textform(props) {
   // }
   return (
     <>
-        <h1>{props.heading}</h1>
+        <h2>{props.heading}</h2>
         <div>
-          <textarea className="form-control" onChange={handleOnchange} id="Textbox" rows="8" value={text}style={{backgroundColor:props.mode==='dark'?'#212529':'white' , color:props.mode==='dark'?'white':'black'}}></textarea>
-          <div className="btn-group my-2" role="group" aria-label="Basic radio toggle button group">
-              {/* <input type="radio" className="btn-check mx-10" name="btnradio" id="btnradio1" autocomplete="off" /> */}
-              <label className={`btn btn-${props.mode==='dark'?'secondary':'primary'} `} htmlFor="btnradio1" onClick={uppercase}>Convert to UpperCase</label>
-              <label className={`btn btn-${props.mode==='dark'?'secondary':'primary'} mx-2`} htmlFor="btnradio2" onClick={lowercase}>Convert to LowerCase</label>
-              <label className={`btn btn-${props.mode==='dark'?'secondary':'primary'}`} htmlFor="btnradio3" onClick={emailExtract}>Extract Email</label>
-              <label className={`btn btn-${props.mode==='dark'?'secondary':'primary'} mx-2`} htmlFor="btnradio3" onClick={copytext}>Copy Text</label>
-              <label className={`btn btn-${props.mode==='dark'?'secondary':'primary'}`} htmlFor="btnradio3" onClick={spaces}>Remove extra spaces</label>
-              <label className={`btn btn-${props.mode==='dark'?'secondary':'primary'} mx-2`} htmlFor="btnradio3" onClick={cleartext}>Clear Text</label>
-          </div>
+          <textarea className="form-control" onChange={handleOnchange} id="Textbox" rows="7" value={text}style={{backgroundColor:props.mode==='dark'?'#212529':'white' , color:props.mode==='dark'?'white':'black'}}></textarea>
+       
+             
+              <label className={`btn btn-${props.mode==='dark'?'secondary':'primary'} my-2 mx-1 `} htmlFor="btnradio1" onClick={uppercase}>Convert to UpperCase</label>
+              <label className={`btn btn-${props.mode==='dark'?'secondary':'primary'} my-2 mx-1 `} htmlFor="btnradio2" onClick={lowercase}>Convert to LowerCase</label>
+              <label className={`btn btn-${props.mode==='dark'?'secondary':'primary'} my-2 mx-1`} htmlFor="btnradio3" onClick={emailExtract}>Extract Email</label>
+              <label className={`btn btn-${props.mode==='dark'?'secondary':'primary'} my-2 mx-1 `} htmlFor="btnradio3" onClick={copytext}>Copy Text</label>
+              <label className={`btn btn-${props.mode==='dark'?'secondary':'primary'} my-2 mx-1`} htmlFor="btnradio3" onClick={spaces}>Remove extra spaces</label>
+              <label className={`btn btn-${props.mode==='dark'?'secondary':'primary'} my-2 mx-1 `} htmlFor="btnradio3" onClick={cleartext}>Clear Text</label>
         </div>
         <div className="container">
           <h1>Email in text</h1>
           <p>{email}</p>
           <h1>Text summary</h1>
-          <p>{text.length>0?text.split(" ").filter((a)=>{return a!==''}).length:"0"} Words , {text.length - (text.split(' ').length-1)} characters</p>
+          <p>{text.length>0?text.split(/\s+/).filter((a)=>{return a.length!=0}).length:"0"} Words , {text.length - (text.split(' ').length-1)} characters</p>
           <p>{0.008 * (text.length>0?text.split(" ").filter((a)=>{return a!==''}).length:"0")* 60} seconds require to read this text</p>
           <h3>Preview</h3>
           <p>{text.length>0?text:"Enter something to preview"}</p>
